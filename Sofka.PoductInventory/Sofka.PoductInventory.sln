@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B26ACD8B-1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.AplicationTest", "Sofka.ProductInventory.AplicationTest\Sofka.ProductInventory.AplicationTest.csproj", "{A7398EE6-B153-4662-8F50-E284195EF3E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.WebApi", "Sofka.ProductInventory.WebApi\Sofka.ProductInventory.WebApi.csproj", "{CE857F79-0D46-4784-8C86-51FE90E2FCAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{A7398EE6-B153-4662-8F50-E284195EF3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7398EE6-B153-4662-8F50-E284195EF3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7398EE6-B153-4662-8F50-E284195EF3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE857F79-0D46-4784-8C86-51FE90E2FCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE857F79-0D46-4784-8C86-51FE90E2FCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE857F79-0D46-4784-8C86-51FE90E2FCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE857F79-0D46-4784-8C86-51FE90E2FCAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{F0601F98-DACD-4B31-B1E1-2CF07206217C} = {8C6768D0-6C21-498E-A84B-6196FAAF62DB}
 		{31C284CC-8779-464B-883A-9838B4A44968} = {8C6768D0-6C21-498E-A84B-6196FAAF62DB}
 		{A7398EE6-B153-4662-8F50-E284195EF3E7} = {B26ACD8B-1951-46CD-9F13-A2C1934FB5CA}
+		{CE857F79-0D46-4784-8C86-51FE90E2FCAF} = {8C6768D0-6C21-498E-A84B-6196FAAF62DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {97136ADB-A35C-4AC8-8C63-9AD33E7ACDDB}

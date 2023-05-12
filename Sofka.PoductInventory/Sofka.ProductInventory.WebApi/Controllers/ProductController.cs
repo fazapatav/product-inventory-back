@@ -5,7 +5,7 @@ using Sofka.ProductInventory.Core.Entities;
 
 namespace Sofka.ProductInventory.WebApi.Controllers
 {
-
+    /*
     [ApiController]
     [Route("[controller]")]
     public class ProductController: ControllerBase
@@ -24,5 +24,5 @@ namespace Sofka.ProductInventory.WebApi.Controllers
             return Ok("todo bn");
 
         }
-    }
+    }*/
 }

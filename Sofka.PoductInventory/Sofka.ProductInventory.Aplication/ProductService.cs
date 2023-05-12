@@ -15,7 +15,7 @@ namespace Sofka.ProductInventory.Aplication
         public async Task CreateProduct(Product product)
         {
             Product product1 = new Product { InInventory=1,Name="xiaomi11",Max=5,Min=1};
-            await _productRepository.AddAsync(product);
+            await _productRepository.AddAsync(product1);
         }
     }
 }

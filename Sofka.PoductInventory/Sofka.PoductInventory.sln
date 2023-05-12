@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.Core", "Sofka.ProductInventory.Core\Sofka.ProductInventory.Core.csproj", "{16964CCA-6E64-4829-9E4E-BBEC34496DFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sofka.ProductInventory.Core", "Sofka.ProductInventory.Core\Sofka.ProductInventory.Core.csproj", "{16964CCA-6E64-4829-9E4E-BBEC34496DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.Aplication", "Sofka.ProductInventory.Aplication\Sofka.ProductInventory.Aplication.csproj", "{F0601F98-DACD-4B31-B1E1-2CF07206217C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sofka.ProductInventory.Aplication", "Sofka.ProductInventory.Aplication\Sofka.ProductInventory.Aplication.csproj", "{F0601F98-DACD-4B31-B1E1-2CF07206217C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.Infrastucture", "Sofka.ProductInventory.Infrastucture\Sofka.ProductInventory.Infrastucture.csproj", "{31C284CC-8779-464B-883A-9838B4A44968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sofka.ProductInventory.Infrastucture", "Sofka.ProductInventory.Infrastucture\Sofka.ProductInventory.Infrastucture.csproj", "{31C284CC-8779-464B-883A-9838B4A44968}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C6768D0-6C21-498E-A84B-6196FAAF62DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B26ACD8B-1951-46CD-9F13-A2C1934FB5CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.AplicationTest", "Sofka.ProductInventory.AplicationTest\Sofka.ProductInventory.AplicationTest.csproj", "{A7398EE6-B153-4662-8F50-E284195EF3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sofka.ProductInventory.AplicationTest", "Sofka.ProductInventory.AplicationTest\Sofka.ProductInventory.AplicationTest.csproj", "{A7398EE6-B153-4662-8F50-E284195EF3E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sofka.ProductInventory.WebApi", "Sofka.ProductInventory.WebApi\Sofka.ProductInventory.WebApi.csproj", "{CE857F79-0D46-4784-8C86-51FE90E2FCAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sofka.ProductInventory.WebApi", "Sofka.ProductInventory.WebApi\Sofka.ProductInventory.WebApi.csproj", "{CE857F79-0D46-4784-8C86-51FE90E2FCAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

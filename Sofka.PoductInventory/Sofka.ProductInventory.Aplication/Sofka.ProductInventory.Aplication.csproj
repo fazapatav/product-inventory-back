@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sofka.ProductInventory.Core\Sofka.ProductInventory.Core.csproj" />
+  </ItemGroup>
+
 </Project>

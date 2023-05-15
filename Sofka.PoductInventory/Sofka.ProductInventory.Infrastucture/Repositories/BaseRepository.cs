@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using Sofka.ProductInventory.Core.Domain.Interfaces;
-using System.Data;
+using Sofka.ProductInventory.Core.Entities;
 
 
 namespace Sofka.ProductInventory.Infrastucture.Repositories
@@ -28,9 +28,11 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
              */
 
             using var connection = _dbConnectionFactory.CreateConnection();
-            var query = "INSERT INTO " + typeof(T).Name + " VALUES (@Id,@Name, @InInventory,@Min,@Max,@BuyId)";
-            //await connection.ExecuteAsync(query,entity);
+            //var query = "INSERT INTO " + typeof(T).Name + "(Name,InInventory,Min,Max) VALUES (@Name, @InInventory,@Min,@Max)";
+            //Product product = new Product { InInventory = 1, Max = 500, Min = 200, Name = "agua" };
+            //await connection.ExecuteAsync(query, product);
             await connection.InsertAsync<T>(entity);
+            //dapper contrib
         }
 
         public Task DeleteAsync(int id)
@@ -38,9 +40,11 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using var connection = _dbConnectionFactory.CreateConnection();
+            return await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name}");
         }
 
         public Task<T> GetByIdAsync(int id)

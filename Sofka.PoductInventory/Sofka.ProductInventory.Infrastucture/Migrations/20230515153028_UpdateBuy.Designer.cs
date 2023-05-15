@@ -12,8 +12,8 @@ using Sofka.ProductInventory.Infrastucture.Data;
 namespace Sofka.ProductInventory.Infrastucture.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230512201532_InitialDb")]
-    partial class InitialDb
+    [Migration("20230515153028_UpdateBuy")]
+    partial class UpdateBuy
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,16 +36,38 @@ namespace Sofka.ProductInventory.Infrastucture.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.ToTable("Buy");
+                });
+
+            modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("IdType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Identification")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.Product", b =>
@@ -55,9 +77,6 @@ namespace Sofka.ProductInventory.Infrastucture.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("BuyId")
-                        .HasColumnType("int");
 
                     b.Property<int>("InInventory")
                         .HasColumnType("int");
@@ -74,16 +93,59 @@ namespace Sofka.ProductInventory.Infrastucture.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BuyId");
-
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.Product", b =>
+            modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.ProductBuy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BuyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuyId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductBuy");
+                });
+
+            modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.Buy", b =>
+                {
+                    b.HasOne("Sofka.ProductInventory.Core.Entities.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.ProductBuy", b =>
                 {
                     b.HasOne("Sofka.ProductInventory.Core.Entities.Buy", null)
                         .WithMany("Products")
                         .HasForeignKey("BuyId");
+
+                    b.HasOne("Sofka.ProductInventory.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Sofka.ProductInventory.Core.Entities.Buy", b =>

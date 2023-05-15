@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sofka.ProductInventory.Core.Entities
 {
-    public class Buy
+    public class Client
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public int ClientId { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual ICollection<ProductBuy> Products { get; set; }
+        public string Name { get; set; }
+        public  string IdType { get; set; }
+        public int Identification { get; set; }
     }
 }

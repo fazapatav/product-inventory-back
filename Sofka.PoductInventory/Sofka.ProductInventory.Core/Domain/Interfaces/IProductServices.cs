@@ -9,6 +9,11 @@ namespace Sofka.ProductInventory.Core.Domain.Interfaces
 {
     public interface IProductServices
     {
-        Task CreateProduct(Product product);
+        Task<Product> GetProductById(int productId);
+        Task<List<Product>> GetProducts();
+        Task Create(Product product);
+        Task Update(Product product);
+        Task Delete(int productId);
+
     }
 }

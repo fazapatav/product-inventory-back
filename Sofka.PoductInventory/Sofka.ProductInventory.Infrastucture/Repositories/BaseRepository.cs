@@ -1,7 +1,5 @@
 ﻿using Dapper;
-using Dapper.Contrib.Extensions;
 using Sofka.ProductInventory.Core.Domain.Interfaces;
-using Sofka.ProductInventory.Core.Entities;
 
 
 namespace Sofka.ProductInventory.Infrastucture.Repositories
@@ -14,47 +12,73 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
         {
             _dbConnectionFactory = dbConnectionFactory;
         }
-        public async Task AddAsync(T entity)
+        public async Task<int> AddAsync(T entity)
         {
-            var typeName = typeof(T).Name;
-            var properties = typeof(T).GetProperties();
-            //cada item de properties tiene la propeidad Name, la idea es recorrer ese array y concatenar, tener en cuenta el siguiente código
-            /*
-             *   var sql = string.Format("INSERT INTO [{0}] ({1}) 
-            VALUES (@{2}) SELECT CAST(scope_identity() AS int)",
+            dynamic properties = typeof(T).GetProperties();
+            List<string> entityProperties = GetEntityProperties(properties);
+
+            string query = string.Format("INSERT INTO {0} ({1}) VALUES (@{2}) SELECT CAST(scope_identity() AS int)",
                 typeof(T).Name,
-                string.Join(", ", propertyContainer.ValueNames),
-                string.Join(", @", propertyContainer.ValueNames));
-             */
-
+                string.Join(", ", entityProperties),
+                string.Join(", @", entityProperties));
+             
             using var connection = _dbConnectionFactory.CreateConnection();
-            //var query = "INSERT INTO " + typeof(T).Name + "(Name,InInventory,Min,Max) VALUES (@Name, @InInventory,@Min,@Max)";
-            //Product product = new Product { InInventory = 1, Max = 500, Min = 200, Name = "agua" };
-            //await connection.ExecuteAsync(query, product);
-            await connection.InsertAsync<T>(entity);
-            //dapper contrib
+            var id = await connection.ExecuteAsync(query, entity);
+
+            return id;
         }
 
-        public Task DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
             using var connection = _dbConnectionFactory.CreateConnection();
-            return await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name}");
+            string query = $"DELETE FROM {typeof(T).Name} WHERE Id = @Id";
+            await connection.ExecuteAsync(query,new {Id = id});
         }
 
-        public Task<T> GetByIdAsync(int id)
+
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using var connection = _dbConnectionFactory.CreateConnection();
+            var result =  await connection.QueryAsync<T>($"SELECT * FROM {typeof(T).Name}");
+            return result.ToList();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            using var connection = _dbConnectionFactory.CreateConnection();
+            string query = $"SELECT * FROM {typeof(T).Name} WHERE Id = @Id";
+            return await connection.QuerySingleOrDefaultAsync<T>(query, new { Id = id });
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            dynamic properties = typeof(T).GetProperties();
+            List<string> entityProperties = GetEntityProperties(properties);
+            List<string> updateSetProperties = new List<string>();
+            entityProperties.ForEach(property =>
+            {
+                updateSetProperties.Add($"{property} = @{property}");
+            });
+
+            string query = string.Format("UPDATE {0} SET  {1} WHERE ID = @Id",
+                typeof(T).Name,
+                string.Join(", ", updateSetProperties));
+                
+            using var connection = _dbConnectionFactory.CreateConnection();
+            var id = await connection.ExecuteAsync(query, entity);
+        }
+
+        private List<string> GetEntityProperties(dynamic properties)
+        {
+            List<string> entityProperties = new List<string>();
+            foreach (var property in properties)
+            {
+                if (property.Name != "Id")
+                {
+                    entityProperties.Add(property.Name);
+                }
+            }
+            return entityProperties;
         }
     }
 }

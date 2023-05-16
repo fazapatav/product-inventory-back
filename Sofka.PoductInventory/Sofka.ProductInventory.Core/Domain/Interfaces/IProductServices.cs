@@ -14,6 +14,5 @@ namespace Sofka.ProductInventory.Core.Domain.Interfaces
         Task Create(Product product);
         Task Update(Product product);
         Task Delete(int productId);
-
     }
 }

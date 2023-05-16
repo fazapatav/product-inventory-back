@@ -11,6 +11,7 @@ namespace Sofka.ProductInventory.Infrastucture
         {
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IProductServices,ProductService>();
+            services.AddScoped<IBuyServices, BuyServices>();
         }
     }
 }

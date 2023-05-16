@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sofka.ProductInventory.Aplication;
 using Sofka.ProductInventory.Core.Domain.Interfaces;
+using Sofka.ProductInventory.Core.Dto;
 using Sofka.ProductInventory.Core.Entities;
 
 namespace Sofka.ProductInventory.WebApi.Controllers
@@ -45,7 +45,7 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] Buy buy)
+        public async Task<IActionResult> Create([FromBody] BuyDto buy)
         {
             try
             {

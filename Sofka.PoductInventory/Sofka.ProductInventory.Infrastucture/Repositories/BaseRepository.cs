@@ -71,9 +71,10 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
         private List<string> GetEntityProperties(dynamic properties)
         {
             List<string> entityProperties = new List<string>();
+            List<string> excludedProperties = new List<string> { "Id","Client","Products","Product"};
             foreach (var property in properties)
             {
-                if (property.Name != "Id")
+                if (!excludedProperties.Contains(property.Name))
                 {
                     entityProperties.Add(property.Name);
                 }

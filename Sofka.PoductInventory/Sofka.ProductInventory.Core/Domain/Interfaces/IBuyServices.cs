@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sofka.ProductInventory.Core.Dto;
 using Sofka.ProductInventory.Core.Entities;
 
 namespace Sofka.ProductInventory.Core.Domain.Interfaces
@@ -11,7 +12,7 @@ namespace Sofka.ProductInventory.Core.Domain.Interfaces
     {
         Task<Buy> GetBuyById(int buyId);
         Task<List<Buy>> GetBuys();
-        Task Create(Buy buy);
+        Task Create(BuyDto buy);
         Task Update(Buy buy);
         Task Delete(int buyId);
     }

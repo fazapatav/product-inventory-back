@@ -7,13 +7,13 @@ namespace Sofka.ProductInventory.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BuyController:ControllerBase
+    public class ClientController:ControllerBase
     {
-        private readonly IBuyServices _buyServices;
+        private readonly IclientService _clientService;
 
-        public BuyController(IBuyServices services)
+        public ClientController(IclientService clientService)
         {
-            _buyServices = services;
+            _clientService = clientService;
         }
 
         [HttpGet("GetById")]
@@ -21,8 +21,8 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         {
             try
             {
-                Buy buy = await _buyServices.GetBuyById(id);
-                return Ok(buy);
+                Client  client = await _clientService.GetClientById(id);
+                return Ok(client);
             }
             catch (Exception ex)
             {
@@ -35,8 +35,8 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         {
             try
             {
-                List<Buy> buys = await _buyServices.GetBuys();
-                return Ok(buys);
+                List<Client> clients = await _clientService.GetClients();
+                return Ok(clients);
             }
             catch (Exception ex)
             {
@@ -45,12 +45,12 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] Buy buy)
+        public async Task<IActionResult> Create([FromBody] Client client)
         {
             try
             {
-                if (buy == null) { return BadRequest(); }
-                await _buyServices.Create(buy);
+                if (client == null) { return BadRequest(); }
+                await _clientService.Create(client);
             }
             catch (Exception ex)
             {
@@ -60,12 +60,12 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update([FromBody] Buy buy)
+        public async Task<IActionResult> Update([FromBody] Client client)
         {
             try
             {
-                if (buy == null) { return BadRequest(); }
-                await _buyServices.Update(buy);
+                if (client == null) { return BadRequest(); }
+                await _clientService.Update(client);
             }
             catch (Exception ex)
             {
@@ -75,11 +75,11 @@ namespace Sofka.ProductInventory.WebApi.Controllers
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromBody] int buyId)
+        public async Task<IActionResult> Delete([FromBody] int clientId)
         {
             try
             {
-                await _buyServices.Delete(buyId);
+                await _clientService.Delete(clientId);
                 return Ok();
             }
             catch (Exception ex)

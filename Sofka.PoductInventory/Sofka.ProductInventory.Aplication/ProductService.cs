@@ -1,4 +1,5 @@
 ﻿using Sofka.ProductInventory.Core.Domain.Interfaces;
+using Sofka.ProductInventory.Core.Dto;
 using Sofka.ProductInventory.Core.Entities;
 
 namespace Sofka.ProductInventory.Aplication
@@ -35,6 +36,15 @@ namespace Sofka.ProductInventory.Aplication
         public async Task Update(Product product)
         {
             await _productRepository.UpdateAsync(product);
+        }
+
+        public bool ProductIsValidFoyBuy(Product product,ProductDto productDto)
+        {
+            bool isValid = false;
+            bool inInventory = product.InInventory >= productDto.Quantity;
+            bool isBetweenMinandMax = productDto.Quantity>= product.Min && productDto.Quantity<= product.Max;
+            if (inInventory && isBetweenMinandMax) { isValid = true; }
+            return isValid;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Sofka.ProductInventory.Core.Entities;
+﻿using Sofka.ProductInventory.Core.Dto;
+using Sofka.ProductInventory.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace Sofka.ProductInventory.Core.Domain.Interfaces
         Task Create(Product product);
         Task Update(Product product);
         Task Delete(int productId);
+        bool ProductIsValidFoyBuy(Product product, ProductDto productDto);
     }
 }

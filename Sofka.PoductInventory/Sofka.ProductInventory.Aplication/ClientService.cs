@@ -1,10 +1,6 @@
 ﻿using Sofka.ProductInventory.Core.Domain.Interfaces;
 using Sofka.ProductInventory.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Sofka.ProductInventory.Aplication
 {
@@ -39,6 +35,14 @@ namespace Sofka.ProductInventory.Aplication
         public async Task Update(Client client)
         {
             await _clientRepository.UpdateAsync(client);
+        }
+        public async Task ClientExist(int idclient)
+        {
+            Client client = await _clientRepository.GetByIdAsync(idclient);
+            if (client == null)
+            {
+                throw new Exception($"El cliente {idclient} no existe");
+            }
         }
     }
 }

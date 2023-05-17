@@ -12,7 +12,7 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
         {
             _dbConnectionFactory = dbConnectionFactory;
         }
-        public async Task AddAsync(T entity)
+        public async Task<int> AddAsync(T entity)
         {
             dynamic properties = typeof(T).GetProperties();
             List<string> entityProperties = GetEntityProperties(properties);
@@ -23,7 +23,8 @@ namespace Sofka.ProductInventory.Infrastucture.Repositories
                 string.Join(", @", entityProperties));
              
             using var connection = _dbConnectionFactory.CreateConnection();
-            var id = await connection.QuerySingle<int>(query, entity);
+            var id = await connection.ExecuteScalarAsync<int>(query, entity);
+            return id;
         }
 
         public async Task DeleteAsync(int id)

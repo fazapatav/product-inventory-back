@@ -74,9 +74,9 @@ namespace Sofka.ProductInventory.Aplication
         private async Task SaveBuy(BuyDto buyDto,List<ProductBuy> productsBuy,List<Product> products)
         {
             Buy buy = new Buy { ClientId = buyDto.IdClient, Date = buyDto.Date };
-            productsBuy = productsBuy.Select(x => { x.BuyId = 1; return x; }).ToList();
-
-            await _buyRepository.AddAsync(buy);
+            int buiId = await _buyRepository.AddAsync(buy);
+            productsBuy = productsBuy.Select(x => { x.BuyId = buiId; return x; }).ToList();
+            
             foreach (Product product in products)
             {
                 await _productServices.Update(product);

@@ -49,9 +49,9 @@ namespace Sofka.ProductInventory.AplicationTest
             _productServicesMock.Setup(x => x.ProductIsValidFoyBuy(product1, It.IsAny<ProductDto>())).Returns(true);
             _productServicesMock.Setup(x => x.ProductIsValidFoyBuy(product2, It.IsAny<ProductDto>())).Returns(true);
 
-            _buyRepositoryMock.Setup(x => x.AddAsync(It.IsAny<Buy>())).Returns(Task.CompletedTask);
+            _buyRepositoryMock.Setup(x => x.AddAsync(It.IsAny<Buy>())).Returns(Task.FromResult(1));
             _productServicesMock.Setup(x => x.Update(It.IsAny<Product>())).Returns(Task.CompletedTask);
-            _productBuyRepositoryMock.Setup(x => x.AddAsync(It.IsAny<ProductBuy>())).Returns(Task.CompletedTask);
+            _productBuyRepositoryMock.Setup(x => x.AddAsync(It.IsAny<ProductBuy>())).Returns(Task.FromResult(1));
 
             // Act
             await _buyServices.Create(buyDto);

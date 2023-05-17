@@ -11,7 +11,7 @@ namespace Sofka.ProductInventory.Core.Domain.Interfaces
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task AddAsync(T entity);
+        Task<int> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
     }

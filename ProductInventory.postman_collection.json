@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "51e04bd3-3ec9-4798-8739-68c512a793bf",
+		"name": "ProductInventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1226335"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Client/Get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"Get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Client/GetById?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"User\",\r\n  \"idType\": \"cc\",\r\n  \"identification\": 123456\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Client/Create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"Create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"user2\",\r\n  \"idType\": \"cc\",\r\n  \"identification\": 123456\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Client/Update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"Update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "3",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Client/Delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"Delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Product/Get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Product",
+								"Get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Product/GetById?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Product",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"poco phone x3\",\r\n  \"inInventory\": 50,\r\n  \"min\": 2,\r\n  \"max\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Product/Create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Product",
+								"Create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 7,\r\n  \"name\": \"poco phone x4\",\r\n  \"inInventory\": 20,\r\n  \"min\": 2,\r\n  \"max\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Product/Update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Product",
+								"Update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "7",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Product/Delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Product",
+								"Delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buy",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Buy/Get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Buy",
+								"Get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7267/Buy/GetById?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Buy",
+								"GetById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2023-05-17T13:14:40.329Z\",\r\n  \"idClient\": 1,\r\n  \"products\": [\r\n    {\r\n      \"idProduct\": 1,\r\n      \"quantity\": 100\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Buy/Create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Buy",
+								"Create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"date\": \"2023-05-17T13:36:17.589Z\",\r\n  \"clientId\": 0,\r\n  \"client\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\",\r\n    \"idType\": \"string\",\r\n    \"identification\": 0\r\n  },\r\n  \"products\": [\r\n    {\r\n      \"id\": 0,\r\n      \"quantity\": 0,\r\n      \"productId\": 0,\r\n      \"buyId\": 0,\r\n      \"product\": {\r\n        \"id\": 0,\r\n        \"name\": \"string\",\r\n        \"inInventory\": 0,\r\n        \"min\": 0,\r\n        \"max\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Buy/Update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Buy",
+								"Update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "2",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7267/Client/Delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7267",
+							"path": [
+								"Client",
+								"Delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
